@@ -3,6 +3,6 @@
 
 int main()
 {
-	std::cout << "pozneeva.sofya\n";
-	return 0;
+    std::cout << "pozneeva.sofya\n";
+    return 0;
 }
