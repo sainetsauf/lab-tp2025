@@ -17,7 +17,7 @@ namespace nspace {
             return left.key1 < right.key1;
         }
     }
- 
+
     std::istream& operator>>(std::istream& in, DelimiterIO&& dest) {
         std::istream::sentry sentry(in);
         if (!sentry) {
@@ -30,8 +30,8 @@ namespace nspace {
         }
         return in;
     }
- 
- 
+
+
     std::istream& operator>>(std::istream& in, CharIO&& dest) {
         std::istream::sentry sentry(in);
         if (!sentry) {
@@ -45,38 +45,38 @@ namespace nspace {
         else {
             in.setstate(std::ios::failbit);
         }
- 
+
         return in;
     }
- 
- 
+
+
     std::istream& operator>>(std::istream& in, LongLongIO&& dest) {
         std::istream::sentry sentry(in);
         if (!sentry) {
             return in;
         }
- 
+
         return in >> DelimiterIO{ 'N' } >> dest.ref;
     }
- 
+
     std::istream& operator>>(std::istream& in, UnsLongLongIO&& dest) {
         std::istream::sentry sentry(in);
         if (!sentry) {
             return in;
         }
- 
+
         return in >> DelimiterIO{ 'D' } >> dest.ref;
     }
- 
+
     std::istream& operator>>(std::istream& in, StringIO&& dest) {
         std::istream::sentry sentry(in);
         if (!sentry) {
             return in;
         }
- 
+
         return std::getline(in >> DelimiterIO{ '"' }, dest.ref, '"');
     }
- 
+
     std::istream& operator>>(std::istream& in, DataStruct& dest) {
         std::istream::sentry sentry(in);
         if (!sentry) {
@@ -84,23 +84,23 @@ namespace nspace {
         }
         DataStruct input;
         bool fkey1 = false, fkey2 = false, fkey3 = false;
- 
+
         using sep = DelimiterIO;
         using chr = CharIO;
         using ll = LongLongIO;
         using ull = UnsLongLongIO;
         using str = StringIO;
- 
+
         in >> sep{ '(' };
         while (!(fkey1 && fkey2 && fkey3)) {
             std::string temp;
             char ch;
- 
+
             in >> ch;
             if (!in) {
                 break;
             }
- 
+
             if (ch == ':' && (in >> temp)) {
                 if (temp == "key1") {
                     in >> chr{ input.key1 };
@@ -119,27 +119,27 @@ namespace nspace {
             }
         }
         in >> sep{ ':' } >> sep{ ')' };
- 
+
         if (in) {
             dest = input;
         }
- 
+
         return in;
     }
- 
+
     std::ostream& operator<<(std::ostream& out, const DataStruct& src) {
         std::ostream::sentry sentry(out);
         if (!sentry) {
             return out;
         }
         iofmtguard fmtguard(out);
- 
+
         out << "(:";
         out << "key1 '" << src.key1 << "'";
         out << ":key2 (:N " << src.key2.first << ":D " << src.key2.second << ":)";
         out << ":key3 \"" << src.key3 << "\"";
         out << ":)";
- 
+
         return out;
     }
 }
