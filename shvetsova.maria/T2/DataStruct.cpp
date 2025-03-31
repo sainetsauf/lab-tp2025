@@ -22,7 +22,6 @@ namespace nspace{
         DataStruct input;
         {
             using sep = DelimiterIO;
-            using label = LabelIO;
             using ull = UnsighLongLongIO;
             using dbl = DoubleIO;
             using str = StringIO;
