@@ -14,32 +14,32 @@ int32_t main() {
     DataStructs dataStructs{};
     std::copy(
         std::istream_iterator<DataStruct>{std::cin},
-	std::istream_iterator<DataStruct>{},
-	std::back_inserter(dataStructs)
+        std::istream_iterator<DataStruct>{},
+        std::back_inserter(dataStructs)
     );
 
     std::sort(
         std::begin(dataStructs),
         std::end(dataStructs),
         [](const DataStruct &a, const DataStruct &b) {
-	    if (a.key1 < b.key1) {
-		return true;
-	    } else if (a.key1 > b.key1) {
-		return false;
-	    }
+            if (a.key1 < b.key1) {
+                return true;
+            } else if (a.key1 > b.key1) {
+                return false;
+            }
 
-	    if (a.key2 < b.key2) {
-		return true;
-	    } else if (a.key2 > b.key2) {
-		return false;
-	    }
+            if (a.key2 < b.key2) {
+                return true;
+            } else if (a.key2 > b.key2) {
+                return false;
+            }
 
-	    return a.key3.length() < b.key3.length();
+            return a.key3.length() < b.key3.length();
         });
 
     std::copy(
-	std::begin(dataStructs),
-	std::end(dataStructs),
+        std::begin(dataStructs),
+        std::end(dataStructs),
         std::ostream_iterator<DataStruct>{std::cout, "\n"}
     );
 
