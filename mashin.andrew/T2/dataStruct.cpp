@@ -39,7 +39,7 @@ namespace nspace {
         }
         std::string data;
         std::getline(in >> DelimiterIO { '\''}, data, '\'');
-        if (data[1] == '\0') {
+        if (data[0] != '\0' && data[1] == '\0') {
             dest.ref = data[0];
         }
         else {
