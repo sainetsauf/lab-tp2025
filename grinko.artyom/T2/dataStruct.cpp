@@ -36,8 +36,8 @@ std::istream &operator>>(std::istream &stream, const DelimiterOr &&delimiterOr) 
 	char expected{};
 	stream >> expected;
 	if (stream &&
-	    expected != delimiterOr.expected[0] &&
-	    expected != delimiterOr.expected[1]) {
+	        expected != delimiterOr.expected[0] &&
+	        expected != delimiterOr.expected[1]) {
 	    stream.setstate(std::ios::failbit);
 	}
     }
@@ -69,10 +69,10 @@ std::istream &operator>>(std::istream &stream, const DoubleDelimiterOr &&doubleD
 	char expected[2]{};
 	stream >> expected[0] >> expected[1];
 	if (stream &&
-	    (expected[0] != doubleDelimiterOr.expectedFirst[0] ||
-	     expected[1] != doubleDelimiterOr.expectedFirst[1]) &&
-	    (expected[0] != doubleDelimiterOr.expectedSecond[0] ||
-	     expected[1] != doubleDelimiterOr.expectedSecond[1])) {
+	        (expected[0] != doubleDelimiterOr.expectedFirst[0] ||
+	            expected[1] != doubleDelimiterOr.expectedFirst[1]) &&
+	        (expected[0] != doubleDelimiterOr.expectedSecond[0] ||
+	            expected[1] != doubleDelimiterOr.expectedSecond[1])) {
 	    stream.setstate(std::ios::failbit);
 	}
     }
