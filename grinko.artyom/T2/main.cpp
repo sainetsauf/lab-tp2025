@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
+#include <limits>
 #include <vector>
 
 #include "dataStruct.h"
@@ -12,11 +13,18 @@ int32_t main() {
     using DataStructs = std::vector<DataStruct>;
 
     DataStructs dataStructs{};
-    std::copy(
-        std::istream_iterator<DataStruct>{std::cin},
-        std::istream_iterator<DataStruct>{},
-        std::back_inserter(dataStructs)
-    );
+    while (!std::cin.eof()) {
+        std::copy(
+            std::istream_iterator<DataStruct>{std::cin},
+            std::istream_iterator<DataStruct>{},
+            std::back_inserter(dataStructs)
+        );
+
+        if (!std::cin) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
 
     std::sort(
         std::begin(dataStructs),
