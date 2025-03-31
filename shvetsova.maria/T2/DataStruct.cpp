@@ -66,8 +66,8 @@ namespace nspace{
             return out;
         }
         iofmtguard fmtguard(out);
-        out << "(:key1 " << std::fixed << std::setprecision(1) << dest.key1 << "d ";
-        out << ":key2 " << dest.key2 << "ull ";
+        out << "(:key1 " << std::fixed << std::setprecision(1) << dest.key1 << "d";
+        out << ":key2 " << dest.key2 << "ull";
         out << ":key3 \"" << dest.key3 << "\":)";
         return out;
     }
