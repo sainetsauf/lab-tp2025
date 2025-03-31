@@ -15,29 +15,29 @@ namespace nspace {
         std::pair<long long, unsigned long long> key2;
         std::string key3;
     };
- 
+
     struct DelimiterIO {
         char exp;
     };
- 
+
     struct CharIO {
         char& ref;
     };
- 
+
     struct LongLongIO {
         long long& ref;
     };
- 
+
     struct UnsLongLongIO {
         unsigned long long& ref;
     };
- 
+
     struct StringIO {
         std::string& ref;
     };
- 
+
     bool comparator(const DataStruct& left, const DataStruct& right);
- 
+
     class iofmtguard {
     public:
         iofmtguard(std::basic_ios<char>& s) :
@@ -47,7 +47,7 @@ namespace nspace {
             precision_(s.precision()),
             fmt_(s.flags())
         {}
- 
+
         ~iofmtguard() {
             s_.width(width_);
             s_.fill(fill_);
@@ -61,7 +61,7 @@ namespace nspace {
         std::streamsize precision_;
         std::basic_ios<char>::fmtflags fmt_;
     };
- 
+
     std::istream& operator>>(std::istream& in, DelimiterIO&& dest);
     std::istream& operator>>(std::istream& in, CharIO&& dest);
     std::istream& operator>>(std::istream& in, LongLongIO&& dest);
