@@ -3,6 +3,7 @@
 #include <iterator>
 #include <vector>
 #include <algorithm>
+#include <limits>
 
 int main()
 {
@@ -19,7 +20,7 @@ int main()
         if (std::cin.fail()) {
             std::cin.clear();
             char c = '\0';
-            while (std::cin.get(c) && c != '\n') {}
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 
