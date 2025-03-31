@@ -19,7 +19,6 @@ int main()
         );
         if (std::cin.fail()) {
             std::cin.clear();
-            char c = '\0';
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
