@@ -110,7 +110,6 @@ std::istream &operator>>(std::istream &stream, const String &&string) {
 const size_t NUMBER_OF_KEYS = 3;
 
 std::istream &operator>>(std::istream &stream, DataStruct &dataStruct) {
-    (void)dataStruct;
     std::istream::sentry sentry{stream};
     if (sentry) {
         bool key1{}, key2{}, key3{};
