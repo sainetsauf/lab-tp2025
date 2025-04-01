@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <ios>
 #include <iostream>
+#include <utility>
 
 #include "streamGuard.h"
 
@@ -146,7 +147,7 @@ std::istream &operator>>(std::istream &stream, DataStruct &dataStruct) {
         stream >> Delimiter{')'};
 
         if (stream && key1 && key2 && key3) {
-            dataStruct = result;
+            dataStruct = std::move(result);
         }
     }
 
