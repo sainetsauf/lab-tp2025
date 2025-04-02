@@ -8,6 +8,7 @@
 #include <iterator>
 #include <algorithm>
 #include <cassert>
+#include <tuple>
 
 namespace nspace {
     struct DataStruct {
