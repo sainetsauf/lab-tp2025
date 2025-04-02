@@ -2,20 +2,8 @@
 
 namespace nspace {
     bool comparator(const DataStruct& left, const DataStruct& right) {
-        if (left.key1 == right.key1 && left.key2 == right.key2) {
-            return left.key3 < right.key3;
-        }
-        else if (left.key1 == right.key1) {
-            if (left.key2.first == right.key2.first) {
-                return left.key2.second < right.key2.second;
-            }
-            else {
-                return left.key2.first < right.key2.first;
-            }
-        }
-        else {
-            return left.key1 < right.key1;
-        }
+        return std::tie(left.key1, left.key2.first, left.key2.second, left.key3) <
+            std::tie(right.key1, right.key2.first, right.key2.second, right.key3);
     }
 
     std::istream& operator>>(std::istream& in, DelimiterIO&& dest) {
@@ -83,7 +71,9 @@ namespace nspace {
             return in;
         }
         DataStruct input;
-        bool fkey1 = false, fkey2 = false, fkey3 = false;
+        bool fkey1 = false;
+        bool fkey2 = false;
+        bool fkey3 = false;
 
         using sep = DelimiterIO;
         using chr = CharIO;
@@ -121,7 +111,7 @@ namespace nspace {
         in >> sep{ ':' } >> sep{ ')' };
 
         if (in) {
-            dest = input;
+            dest = std::move(input);
         }
 
         return in;
