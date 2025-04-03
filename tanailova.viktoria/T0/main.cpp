@@ -1,6 +1,6 @@
 #include <iostream>
 
 int main(){
-    std::cout << "Tanailova.Viktoria" << std::endl;
+    std::cout << "tanailova.viktoria" << std::endl;
     return 0;
 }
