@@ -2,6 +2,6 @@
 
 int main() {
 
-	std::cout<<"oksuz.enes"<< std::endl;
-	return 0;
+    std::cout<<"oksuz.enes"<< std::endl;
+    return 0;
 }
