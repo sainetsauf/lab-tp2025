@@ -112,7 +112,7 @@ std::ostream &operator<<(std::ostream &stream, const Data &data) {
     if (sentry) {
         StreamGuard guard{stream};
         stream << "(:key1 0" << std::oct << data.key1
-               << ":key2 0x" << std::hex << data.key2
+               << ":key2 0x" << std::uppercase << std::hex << data.key2
                << ":key3 \"" << data.key3 << "\"" << ":)";
     }
     return stream;
