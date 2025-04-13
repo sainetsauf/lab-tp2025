@@ -72,7 +72,7 @@ double_t Area::operator()(const std::vector<Polygon> &polygons) const {
     }
 
     double_t result = std::accumulate(std::begin(areas), std::end(areas), 0.0);
-    if (this->type == Type::Mean) {
+    if (this->type == Type::Mean && polygons.size() != 0) {
         result /= polygons.size();
     }
 
