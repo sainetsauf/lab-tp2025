@@ -17,7 +17,6 @@ struct Min: public Command {
 
     Type type{};
 
-    
     Min(Type type);
 
     double_t operator()(const std::vector<Polygon> &) const final override;

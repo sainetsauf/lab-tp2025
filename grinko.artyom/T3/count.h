@@ -21,7 +21,7 @@ struct Count: public Command {
     size_t numberOfVertices = 0;
 
     Count(Type, size_t);
-    
+
     double_t operator()(const std::vector<Polygon> &) const final override;
 };
 

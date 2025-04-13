@@ -8,7 +8,7 @@ double_t shoelace(const Polygon &polygon, size_t index) {
     if (index == polygon.points.size() - 1) {
         return 0;
     }
-    
+
     return
         (polygon.points[index].x * polygon.points[index + 1].y
             - polygon.points[index + 1].x * polygon.points[index].y)

@@ -45,7 +45,7 @@ std::istream &operator>>(std::istream &stream, Count &count) {
             if (!(std::stringstream{type} >> input.numberOfVertices)) {
                 stream.setstate(std::ios::failbit);
             }
-            
+
             input.type = Count::Type::NumberOfVertices;
         }
 

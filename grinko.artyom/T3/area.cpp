@@ -19,7 +19,7 @@ Area::Area(Type type, size_t numberOfVertices):
 
 double_t Area::operator()(const std::vector<Polygon> &polygons) const {
     using namespace std::placeholders;
-    
+
     std::vector<double_t> areas{};
 
     fn<void(fn<double_t(const Polygon &)>)> transformPolygons = std::bind(
@@ -33,7 +33,7 @@ double_t Area::operator()(const std::vector<Polygon> &polygons) const {
         std::back_inserter(areas),
         _1
     );
-    
+
     switch (this->type) {
     case Type::Even:
     case Type::Odd:
@@ -41,17 +41,17 @@ double_t Area::operator()(const std::vector<Polygon> &polygons) const {
             if (polygon.points.size() % 2 == static_cast<size_t>(this->type)) {
                 return shoelace(polygon);
             }
-            
+
             return 0.0;
         });
-        
+
         break;
 
     case Type::Mean:
         transformPolygons([this](const Polygon &polygon) {
             return shoelace(polygon);
         });
-        
+
         break;
 
     case Type::NumberOfVertices:
@@ -67,7 +67,7 @@ double_t Area::operator()(const std::vector<Polygon> &polygons) const {
 
     default:
         assert(false && "You're not supposed to get here.");
-        
+
         break;
     }
 
@@ -96,7 +96,7 @@ std::istream &operator>>(std::istream &stream, Area &area) {
             if (!(std::stringstream{type} >> input.numberOfVertices)) {
                 stream.setstate(std::ios::failbit);
             }
-            
+
             input.type = Area::Type::NumberOfVertices;
         }
 
