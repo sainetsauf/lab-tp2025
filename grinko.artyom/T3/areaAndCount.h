@@ -1,5 +1,5 @@
-#ifndef AreaH
-#define AreaH
+#ifndef AreaAndCountH
+#define AreaAndCountH
 
 #include <cmath>
 #include <cstddef>

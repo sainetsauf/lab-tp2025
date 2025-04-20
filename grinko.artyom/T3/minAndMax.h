@@ -1,5 +1,5 @@
-#ifndef MaxH
-#define MaxH
+#ifndef MinAndMaxH
+#define MinAndMaxH
 
 #include <cmath>
 #include <cstddef>
